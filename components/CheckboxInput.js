@@ -11,8 +11,8 @@ class CheckboxInput extends HTMLElement {
       .container {
         display: block;
         position: relative;
-        height: 20px;
-        padding-left: 25px;
+        height: 16px;
+        padding-left: 20px;
         cursor: pointer;
         font-size: 14px;
         -webkit-user-select: none;
@@ -35,20 +35,22 @@ class CheckboxInput extends HTMLElement {
         position: absolute;
         top: 0;
         left: 0;
-        height: 20px;
-        width: 20px;
-        background-color: #4a5d79;
-        border-radius: 5px;
+        height: 16px;
+        width: 16px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 3px;
       }
-      
+
       /* On mouse-over, add a grey background color */
       .container:hover input ~ .checkmark {
-        background-color: #556c8b;
+        background-color: #f5f5f5;
       }
-      
-      /* When the checkbox is checked, add a blue background */
+
+      /* When the checkbox is checked, add a black background */
       .container input:checked ~ .checkmark {
-        background-color: var(--color-current-session);
+        background-color: #000000;
+        border: 1px solid #000000;
       }
       
       /* Create the checkmark/indicator (hidden when not checked) */
@@ -65,12 +67,12 @@ class CheckboxInput extends HTMLElement {
       
       /* Style the checkmark/indicator */
       .container .checkmark:after {
-        left: 6px;
-        top: 2px;
-        width: 5px;
-        height: 10px;
+        left: 5px;
+        top: 1px;
+        width: 4px;
+        height: 8px;
         border: solid white;
-        border-width: 0 3px 3px 0;
+        border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg) scale(1);

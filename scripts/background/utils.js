@@ -205,6 +205,11 @@ async function getStorage(key) {
  * @returns {string}
  */
 function durationToString(duration, options = { isVerbose: true }) {
+  // Safety check for NaN or invalid duration
+  if (isNaN(duration) || duration == null || duration < 0) {
+    duration = 0;
+  }
+
   const hours = Math.floor(duration / 1000 / 60 / 60);
   const minutes = Math.floor(duration / 1000 / 60) % 60;
   const seconds = Math.floor(duration / 1000) % 60;

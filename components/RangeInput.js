@@ -41,11 +41,11 @@ class RangeInput extends HTMLElement {
           width: 100%;
           height: 100%;
           border-radius: 10px;
-          background: #4a5d79;
+          background: #cccccc;
         }
 
         input::-moz-range-progress {
-          background: var(--color-current-session);
+          background: #000000;
         }
 
         input::-moz-range-thumb {
@@ -53,7 +53,7 @@ class RangeInput extends HTMLElement {
           margin: 0;
           height: 12px;
           width: 12px;
-          background: var(--color-current-session);
+          background: #000000;
           border-radius: 100%;
           border: 0;
         }

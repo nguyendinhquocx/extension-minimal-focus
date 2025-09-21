@@ -36,13 +36,17 @@ class SvgButton extends HTMLElement {
         svg {
             width: ${size};
             height: ${size};
-            color: var(--color-gray);
-            opacity: 0.6;
+            color: #000000;
+            opacity: 0.8;
         }
 
         svg:hover {
             opacity: 1;
-            color: var(--color-current-session);
+            color: #000000;
+        }
+
+        button:hover {
+            background: none !important;
         }
     </style>
     <button>${icon}<slot></slot></button>

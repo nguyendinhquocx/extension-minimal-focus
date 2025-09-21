@@ -47,13 +47,10 @@ function adjustTimerSessionType(sessionType) {
   let sessionTypeText = "";
   switch (sessionType) {
     case "WORK":
-      sessionTypeText = "Focus Time";
+      sessionTypeText = "Tập trung";
       break;
     case "BREAK":
-      sessionTypeText = "Short Break";
-      break;
-    case "LONG_BREAK":
-      sessionTypeText = "Long Break";
+      sessionTypeText = "Nghỉ ngơi";
       break;
   }
 
@@ -82,18 +79,19 @@ function adjustPlayPauseButton(paused) {
   else timerPlayPauseImage.setAttribute("icon-name", "pause");
 }
 
-let lastAdjustSessionRound;
-let lastAdjustMaxSessionRound;
-const sessionRound = document.getElementById("sessionCurrentRound");
-function adjustSessionRound(currentSessionRound, maxSessionRounds) {
-  if (
-    lastAdjustSessionRound === currentSessionRound &&
-    lastAdjustMaxSessionRound === maxSessionRounds
-  ) {
-    return;
-  }
-  lastAdjustSessionRound = currentSessionRound;
-  lastAdjustMaxSessionRound = maxSessionRounds;
+// Session rounds removed - no longer used
+// let lastAdjustSessionRound;
+// let lastAdjustMaxSessionRound;
+// const sessionRound = document.getElementById("sessionCurrentRound");
+// function adjustSessionRound(currentSessionRound, maxSessionRounds) {
+//   if (
+//     lastAdjustSessionRound === currentSessionRound &&
+//     lastAdjustMaxSessionRound === maxSessionRounds
+//   ) {
+//     return;
+//   }
+//   lastAdjustSessionRound = currentSessionRound;
+//   lastAdjustMaxSessionRound = maxSessionRounds;
 
-  sessionRound.innerText = `${currentSessionRound} / ${maxSessionRounds}`;
-}
+//   sessionRound.innerText = `${currentSessionRound} / ${maxSessionRounds}`;
+// }

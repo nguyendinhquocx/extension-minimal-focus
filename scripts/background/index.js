@@ -4,7 +4,21 @@
 /** Inidicates if all values are initialized. To wait, use the `ensureInitialized()` function */
 let INITIALIZED = false;
 (async () => {
-  Object.assign(SETTINGS, await getStorage("SETTINGS"));
+  const storedSettings = await getStorage("SETTINGS");
+  Object.assign(SETTINGS, storedSettings);
+
+  // Force update colors to new black theme
+  SETTINGS.colors = {
+    background: "#ffffff",
+    gray: "#666666",
+    WORK: "#000000",
+    BREAK: "#000000",
+    LONG_BREAK: "#000000",
+  };
+
+  // Save updated settings
+  await setStorage("SETTINGS", SETTINGS);
+
   Object.assign(STATE, {
     isPaused: true,
     startTime: Date.now(),
@@ -54,36 +68,17 @@ setInterval(() => {
   if (timeLeft <= 0 && !STATE.isFinished) {
     switch (STATE.sessionType) {
       case "WORK":
-        STATE.isPaused = SETTINGS.sessionAutoPauseAfterWork;
-        if (STATE.sessionRound >= SETTINGS.sessionRounds) {
-          STATE.sessionType = "LONG_BREAK";
-          pushNotification({
-            title: `Focus time finished`,
-            message: `Completed work round ${STATE.sessionRound} / ${SETTINGS.sessionRounds}. Take a long break`,
-          });
-        } else {
-          STATE.sessionType = "BREAK";
-          pushNotification({
-            title: `Focus time finished`,
-            message: `Completed work round ${STATE.sessionRound} / ${SETTINGS.sessionRounds}. Take a break`,
-          });
-        }
-        break;
-      case "BREAK":
-        STATE.isPaused = SETTINGS.sessionAutoPauseAfterBreak;
-        STATE.sessionType = "WORK";
-        STATE.sessionRound++;
+        STATE.sessionType = "BREAK";
         pushNotification({
-          title: `Break time finished`,
-          message: `Starting work session ${STATE.sessionRound} / ${SETTINGS.sessionRounds}`,
+          title: `Tập trung hoàn thành`,
+          message: `Nghỉ ngơi một chút nhé!`,
         });
         break;
-      case "LONG_BREAK":
-        STATE.isPaused = true;
-        STATE.isFinished = true;
+      case "BREAK":
+        STATE.sessionType = "WORK";
         pushNotification({
-          title: `All session rounds completed`,
-          message: `Finished a total of ${SETTINGS.sessionRounds} rounds`,
+          title: `Nghỉ ngơi xong rồi`,
+          message: `Bắt đầu tập trung làm việc!`,
         });
         break;
     }
@@ -119,7 +114,7 @@ function receiveMessage(message, sender, sendResponse) {
         Object.assign(SETTINGS, message.content);
         await setStorage("SETTINGS", SETTINGS);
 
-        for (const sessionType of ["WORK", "BREAK", "LONG_BREAK"]) {
+        for (const sessionType of ["WORK", "BREAK"]) {
           if (
             STATE.sessionType === sessionType &&
             prevSettings.sessionLength[sessionType] !==
@@ -152,19 +147,10 @@ function receiveMessage(message, sender, sendResponse) {
 
         switch (STATE.sessionType) {
           case "WORK":
-            STATE.sessionRound >= SETTINGS.sessionRounds
-              ? (STATE.sessionType = "LONG_BREAK")
-              : (STATE.sessionType = "BREAK");
-            STATE.isPaused = SETTINGS.sessionAutoPauseAfterWork;
+            STATE.sessionType = "BREAK";
             break;
           case "BREAK":
             STATE.sessionType = "WORK";
-            STATE.sessionRound++;
-            STATE.isPaused = SETTINGS.sessionAutoPauseAfterBreak;
-            break;
-          case "LONG_BREAK":
-            STATE.isPaused = true;
-            STATE.isFinished = true;
             break;
         }
 

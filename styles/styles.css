@@ -1,13 +1,13 @@
 :root {
-  --color-gray: #ffffffaa;
-  --color-background: #1d3557;
+  --color-gray: #666666;
+  --color-background: #ffffff;
 
   /* session Colors */
   /* NOTE: these colors (not replicated) also used in /scripts/background/values.js.
   When updating these, update there too */
-  --color-session-work: #0197f6;
-  --color-session-break: #70b77e;
-  --color-session-long-break: #eb5e28;
+  --color-session-work: #000000;
+  --color-session-break: #000000;
+  --color-session-long-break: #000000;
 
   --color-current-session: var(--color-session-work);
 
@@ -18,7 +18,7 @@
 
 body {
   background-color: var(--color-background);
-  color: var(--color-gray);
+  color: #000000;
   padding: 1rem;
 
   width: 250px;

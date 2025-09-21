@@ -44,6 +44,11 @@ async function sendMessage(action, content, target = "background") {
  * @returns {string} - The string representation of the duration.
  */
 function durationToString(duration, options = { isVerbose: false }) {
+  // Safety check for NaN or invalid duration
+  if (isNaN(duration) || duration == null || duration < 0) {
+    duration = 0;
+  }
+
   const hours = Math.floor(duration / 1000 / 60 / 60);
   const minutes = Math.floor(duration / 1000 / 60) % 60;
   const seconds = Math.floor(duration / 1000) % 60;

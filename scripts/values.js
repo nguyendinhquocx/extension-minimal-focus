@@ -24,12 +24,12 @@ const SETTINGS = {
     LONG_BREAK: 15 * 60 * 1000 + TIMER_PADDING,
   },
   colors: {
-    background: "#2E4057",
-    gray: "#D8D4F2",
+    background: "#ffffff",
+    gray: "#666666",
 
-    WORK: "#0197F6",
-    BREAK: "#70B77E",
-    LONG_BREAK: "#EB5E28",
+    WORK: "#000000",
+    BREAK: "#000000",
+    LONG_BREAK: "#000000",
   },
 
   soundOnNotification: true,

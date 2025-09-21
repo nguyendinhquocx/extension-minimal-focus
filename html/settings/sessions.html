@@ -34,7 +34,7 @@
       <range-input
         id="rangeWorkLength"
         key="WORK"
-        name="Focus Time Length"
+        name="Thời gian tập trung"
         max="120"
         type="mins"
       >
@@ -42,62 +42,17 @@
       <range-input
         id="rangeBreakLength"
         key="BREAK"
-        name="Break Time Length"
+        name="Thời gian nghỉ ngắn"
         max="60"
         type="mins"
-      >
-      </range-input>
-      <range-input
-        id="rangeLongBreakLength"
-        key="LONG_BREAK"
-        name="Long Break Time Length"
-        max="60"
-        type="mins"
-      >
-      </range-input>
-      <range-input
-        id="rangeRounds"
-        key="sessionRounds"
-        name="Session Rounds"
-        max="10"
-        type="rounds"
       >
       </range-input>
 
       <section id="checkboxes">
-        <!-- <label class="checkbox-container">
-          <input class="checkbox" id="stepsByFive" type="checkbox" />
-          steps are by 5
-        </label> -->
-        <checkbox-input id="stepsByFive" label="steps are by 5">
-        </checkbox-input>
-        <checkbox-input
-          id="autoPauseAfterWork"
-          label="auto pause after work"
-        ></checkbox-input>
-        <checkbox-input
-          id="autoPauseAfterBreak"
-          label="auto pause after break"
-        ></checkbox-input>
         <checkbox-input
           id="soundOnNotification"
-          label="sound on notification"
+          label="âm thanh thông báo"
         ></checkbox-input>
-
-        <!-- <label class="checkbox-container">
-          <input class="checkbox" id="autoPauseAfterWork" type="checkbox" />
-          auto pause after work
-        </label>
-
-        <label class="checkbox-container">
-          <input class="checkbox" id="autoPauseAfterBreak" type="checkbox" />
-          auto pause after break
-        </label>
-
-        <label class="checkbox-container">
-          <input class="checkbox" id="soundOnNotification" type="checkbox" />
-          sound on notification
-        </label> -->
       </section>
     </form>
 
@@ -112,15 +67,5 @@
       </info-tooltip>
     </a>
 
-    <!-- GIVE ME A STAR!!! -->
-    <a
-      href="https://github.com/jameskimthing/pomodoro-focus-timer"
-      target="_blank"
-    >
-      <info-tooltip text="give me a star on github!" direction="right">
-        <svg-button id="githubLink" icon-name="github" size="20px">
-        </svg-button>
-      </info-tooltip>
-    </a>
   </body>
 </html>
