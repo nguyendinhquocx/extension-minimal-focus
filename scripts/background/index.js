@@ -160,6 +160,7 @@ function receiveMessage(message, sender, sendResponse) {
       case "reset_timer":
         if (message.content.hard) STATE.hardReset();
         else STATE.softReset();
+        sendMessage("update_state", STATE, "popup"); // Sync state to popup
         sendResponse();
         break;
       case "log":

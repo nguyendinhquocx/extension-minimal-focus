@@ -61,9 +61,8 @@ const STATE = {
     this.storedPausedDuration = 0;
     this.shortPausedDuration = 0;
     this.isFinished = false;
-    this.isPaused
-      ? (this.pauseStartTime = null)
-      : (this.pauseStartTime = Date.now());
+    this.isPaused = true; // Always pause after reset
+    this.pauseStartTime = null;
   },
 
   hardReset: function () {
